@@ -2,26 +2,121 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Hangman</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
   </head>
   <body>
     <div class="body__wrapper">
       <div class="hangman">
-        <svg width="468" height="343" viewBox="0 0 468 343" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line class="object" x1="139.5" y1="338" x2="139.5" stroke="#7F7F7F" stroke-width="5"/>
-          <line class="object" x1="140" y1="2.5" x2="418" y2="2.5" stroke="#7F7F7F" stroke-width="5"/>
-          <line class="object" x1="415.5" y1="3" x2="415.5" y2="59" stroke="#7F7F7F" stroke-width="5"/>
-          <circle class="object" cx="416" cy="97" r="37.5" transform="rotate(-90 416 97)" stroke="#7F7F7F" stroke-width="5"/>
-          <line class="object" x1="415.5" y1="135.974" x2="416.297" y2="211.613" stroke="#7F7F7F" stroke-width="5"/>
-          <line class="object" x1="418.144" y1="158.189" x2="465.189" y2="151.856" stroke="#7F7F7F" stroke-width="5" stroke-linecap="round"/>
-          <line class="object" x1="415.688" y1="213.107" x2="388.107" y2="306.312" stroke="#7F7F7F" stroke-width="5" stroke-linecap="round"/>
-          <line class="object" x1="367.812" y1="151.855" x2="414.856" y2="158.19" stroke="#7F7F7F" stroke-width="5" stroke-linecap="round"/>
-          <line class="object" x1="2.49109" y1="340.491" x2="278.491" y2="339.509" stroke="#7F7F7F" stroke-width="5" stroke-linecap="round"/>
-          <line class="object" x1="417.057" y1="212.775" x2="441.775" y2="305.943" stroke="#7F7F7F" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-              
+        <svg
+          width="468"
+          height="343"
+          viewBox="0 0 468 343"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            class="object"
+            x1="139.5"
+            y1="338"
+            x2="139.5"
+            stroke="#7F7F7F"
+            stroke-width="5"
+          />
+          <line
+            class="object"
+            x1="140"
+            y1="2.5"
+            x2="418"
+            y2="2.5"
+            stroke="#7F7F7F"
+            stroke-width="5"
+          />
+          <line
+            class="object"
+            x1="415.5"
+            y1="3"
+            x2="415.5"
+            y2="59"
+            stroke="#7F7F7F"
+            stroke-width="5"
+          />
+          <circle
+            class="object"
+            cx="416"
+            cy="97"
+            r="37.5"
+            transform="rotate(-90 416 97)"
+            stroke="#7F7F7F"
+            stroke-width="5"
+          />
+          <line
+            class="object"
+            x1="415.5"
+            y1="135.974"
+            x2="416.297"
+            y2="211.613"
+            stroke="#7F7F7F"
+            stroke-width="5"
+          />
+          <line
+            class="object"
+            x1="418.144"
+            y1="158.189"
+            x2="465.189"
+            y2="151.856"
+            stroke="#7F7F7F"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            class="object"
+            x1="415.688"
+            y1="213.107"
+            x2="388.107"
+            y2="306.312"
+            stroke="#7F7F7F"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            class="object"
+            x1="367.812"
+            y1="151.855"
+            x2="414.856"
+            y2="158.19"
+            stroke="#7F7F7F"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            class="object"
+            x1="2.49109"
+            y1="340.491"
+            x2="278.491"
+            y2="339.509"
+            stroke="#7F7F7F"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            class="object"
+            x1="417.057"
+            y1="212.775"
+            x2="441.775"
+            y2="305.943"
+            stroke="#7F7F7F"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+        </svg>
       </div>
 
       <div class="word">
@@ -29,37 +124,185 @@
       </div>
 
       <div class="keyboard">
-        <button class="key" value="A">A</button>
-        <button class="key" value="B">B</button>
-        <button class="key" value="C">C</button>
-        <button class="key" value="D">D</button>
-        <button class="key" value="E">E</button>
-        <button class="key" value="F">F</button>
-        <button class="key" value="G">G</button>
-        <button class="key" value="H">H</button>
-        <button class="key" value="I">I</button>
-        <button class="key" value="J">J</button>
-        <button class="key" value="K">K</button>
-        <button class="key" value="L">L</button>
-        <button class="key" value="M">M</button>
-        <button class="key" value="O">O</button>
-        <button class="key" value="P">P</button>
-        <button class="key" value="Q">Q</button>
-        <button class="key" value="R">R</button>
-        <button class="key" value="S">S</button>
-        <button class="key" value="T">T</button>
-        <button class="key" value="U">U</button>
-        <button class="key" value="V">V</button>
-        <button class="key" value="W">W</button>
-        <button class="key" value="X">X</button>
-        <button class="key" value="Y">Y</button>
-        <button class="key" value="Z">Z</button>
-        <button class="key" value="Ä">Ä</button>
-        <button class="key" value="Ö">Ö</button>
-        <button class="key" value="Ü">Ü</button>
-        <button class="key" value="ß">ß</button>
+        <button
+          class="key"
+          value="A"
+        >
+          A
+        </button>
+        <button
+          class="key"
+          value="B"
+        >
+          B
+        </button>
+        <button
+          class="key"
+          value="C"
+        >
+          C
+        </button>
+        <button
+          class="key"
+          value="D"
+        >
+          D
+        </button>
+        <button
+          class="key"
+          value="E"
+        >
+          E
+        </button>
+        <button
+          class="key"
+          value="F"
+        >
+          F
+        </button>
+        <button
+          class="key"
+          value="G"
+        >
+          G
+        </button>
+        <button
+          class="key"
+          value="H"
+        >
+          H
+        </button>
+        <button
+          class="key"
+          value="I"
+        >
+          I
+        </button>
+        <button
+          class="key"
+          value="J"
+        >
+          J
+        </button>
+        <button
+          class="key"
+          value="K"
+        >
+          K
+        </button>
+        <button
+          class="key"
+          value="L"
+        >
+          L
+        </button>
+        <button
+          class="key"
+          value="M"
+        >
+          M
+        </button>
+        <button
+          class="key"
+          value="O"
+        >
+          O
+        </button>
+        <button
+          class="key"
+          value="P"
+        >
+          P
+        </button>
+        <button
+          class="key"
+          value="Q"
+        >
+          Q
+        </button>
+        <button
+          class="key"
+          value="R"
+        >
+          R
+        </button>
+        <button
+          class="key"
+          value="S"
+        >
+          S
+        </button>
+        <button
+          class="key"
+          value="T"
+        >
+          T
+        </button>
+        <button
+          class="key"
+          value="U"
+        >
+          U
+        </button>
+        <button
+          class="key"
+          value="V"
+        >
+          V
+        </button>
+        <button
+          class="key"
+          value="W"
+        >
+          W
+        </button>
+        <button
+          class="key"
+          value="X"
+        >
+          X
+        </button>
+        <button
+          class="key"
+          value="Y"
+        >
+          Y
+        </button>
+        <button
+          class="key"
+          value="Z"
+        >
+          Z
+        </button>
+        <button
+          class="key"
+          value="Ä"
+        >
+          Ä
+        </button>
+        <button
+          class="key"
+          value="Ö"
+        >
+          Ö
+        </button>
+        <button
+          class="key"
+          value="Ü"
+        >
+          Ü
+        </button>
+        <button
+          class="key"
+          value="ß"
+        >
+          ß
+        </button>
       </div>
     </div>
-    <script src="scripts/index.js" type="module"></script>
+    <script
+      src="scripts/index.js"
+      type="module"
+    ></script>
   </body>
 </html>

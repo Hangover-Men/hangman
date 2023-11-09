@@ -1,3 +1,4 @@
-import { getRandomWord } from "./getRandomWord";
+import { getRandomWord } from './getRandomWord'
 
-getRandomWord()
+const letters = getRandomWord()
+console.log('HIER => ' + letters)
