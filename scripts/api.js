@@ -1,4 +1,7 @@
-export function getRandomWord() {
+let letters = getRandomWord()
+console.log('HIER =>', letters)
+
+function getRandomWord() {
   let letters = []
   // api call
   const request = new XMLHttpRequest()
