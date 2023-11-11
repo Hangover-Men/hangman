@@ -69,12 +69,14 @@ body {
   margin: 0 auto;
 }
 
-
-.object {
+.line {
   stroke: grey;
   stroke-width: 4;
   stroke-dasharray: 1665;
   stroke-dashoffset: 1665;
+}
+
+.line--active {
   animation: dash 10s linear forwards;
 }
 
