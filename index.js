@@ -71,25 +71,84 @@ keyboard.forEach((key) => {
  * @author Savas Tireng
  */
 
-const lines = document.querySelectorAll('.line')
-let queue = 1
+/* Program */
 
+let queue = 1
+const lines = document.querySelectorAll('.line')
+const winContainer = document.querySelector('.message--win')
+const failContainer = document.querySelector('.message--fail')
+
+// Add key event listeners
 keyboard.forEach((key) => {
-  key.addEventListener('click', () => {
-    drawNextLine(queue, lines)
-    queue++
-  })
+  key.addEventListener('click', handleClick)
 })
 
-/**
- * @param  {number} queue
- * @param  {NodeList} lines
- * Draws next line in queue
- */
-function drawNextLine(queue, lines) {
+/* Functions */
+
+function drawNextLine() {
   lines.forEach((line) => {
     if (line.dataset.lineNr === `${queue}`) {
       line.classList.add('line--active')
+      drawn = true
     }
   })
+
+  queue++
+}
+
+function handleClick(event) {
+  // Check if game is already over
+  if (getGameStatus() !== 'goes on') {
+    return
+  }
+
+  // Check if letter was right or wrong
+  const letter = event.target.value.toLowerCase()
+
+  if (letters.includes(letter)) {
+    event.target.classList.add('key--disabled')
+    event.target.classList.add('key--true')
+  } else {
+    event.target.classList.add('key--disabled')
+    event.target.classList.add('key--false')
+    drawNextLine()
+  }
+
+  // Check game status
+  if (getGameStatus() === 'goes on') {
+    return
+  }
+
+  if (getGameStatus() === 'win') {
+    winContainer.classList.add('message--active')
+    return
+  }
+
+  if (getGameStatus() === 'fail') {
+    failContainer.classList.add('message--active')
+    return
+  }
+}
+
+function getGameStatus() {
+  // Return 'fail' if too many mistakes were made
+  if (queue > 10) {
+    return 'fail'
+  }
+
+  // Return 'win' if all words are found
+  let wordsFound = 0
+
+  keyboard.forEach((key) => {
+    if (key.classList.contains('key--true')) {
+      wordsFound++
+    }
+  })
+
+  if (letters.length === wordsFound) {
+    return 'win'
+  }
+
+  // Return 'goes on' if no win and no loss yet
+  return 'goes on'
 }
