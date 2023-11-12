@@ -73,10 +73,10 @@ keyboard.forEach((key) => {
 
 /* Program */
 
-let queue = 1
 const lines = document.querySelectorAll('.line')
 const winContainer = document.querySelector('.message--win')
 const failContainer = document.querySelector('.message--fail')
+let queue = 1 // There are 10 lines - we need to keep track which one is the next to draw
 
 // Add key event listeners
 keyboard.forEach((key) => {
@@ -84,17 +84,6 @@ keyboard.forEach((key) => {
 })
 
 /* Functions */
-
-function drawNextLine() {
-  lines.forEach((line) => {
-    if (line.dataset.lineNr === `${queue}`) {
-      line.classList.add('line--active')
-      drawn = true
-    }
-  })
-
-  queue++
-}
 
 function handleClick(event) {
   // Check if game is already over
@@ -114,20 +103,27 @@ function handleClick(event) {
     drawNextLine()
   }
 
-  // Check game status
-  if (getGameStatus() === 'goes on') {
-    return
+  // Check & update game status
+  switch (getGameStatus()) {
+    case 'goes on':
+      return
+    case 'win':
+      winContainer.classList.add('message--active')
+      return
+    case 'fail':
+      failContainer.classList.add('message--active')
+      return
   }
+}
 
-  if (getGameStatus() === 'win') {
-    winContainer.classList.add('message--active')
-    return
-  }
+function drawNextLine() {
+  lines.forEach((line) => {
+    if (line.dataset.lineNr === `${queue}`) {
+      line.classList.add('line--active')
+    }
+  })
 
-  if (getGameStatus() === 'fail') {
-    failContainer.classList.add('message--active')
-    return
-  }
+  queue++
 }
 
 function getGameStatus() {
