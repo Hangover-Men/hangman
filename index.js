@@ -1,3 +1,8 @@
+/**
+ * API code
+ * @author Armin Saderi
+ */
+
 let letters = getRandomWord()
 console.log('HIER =>', letters)
 
@@ -43,4 +48,48 @@ function getRandomWord() {
   request.send()
   console.log('Kurz vor Ende der func = ' + letters)
   return letters
+}
+
+/**
+ * Keyboard code
+ * @author Mehmet Balkan
+ */
+
+const keyboard = document.querySelectorAll('.key')
+console.log('hier der queryselector')
+console.log(keyboard)
+console.log(keyboard.button)
+
+keyboard.forEach((key) => {
+  key.addEventListener('click', function (e) {
+    console.log(e.target.value.toLowerCase())
+  })
+})
+
+/**
+ * SVG lines code
+ * @author Savas Tireng
+ */
+
+const lines = document.querySelectorAll('.line')
+let queue = 1
+
+keyboard.forEach((key) => {
+  key.addEventListener('click', () => {
+    drawNextLine(queue, lines)
+    queue++
+  })
+})
+
+/**
+ * @param  {number} queue
+ * @param  {NodeList} lines
+ * Draws next line in queue
+ */
+function drawNextLine(queue, lines) {
+  lines.forEach((line) => {
+    if (line.dataset.lineNr === `${queue}`) {
+      line.classList.add('line--active')
+    }
+  })
 }

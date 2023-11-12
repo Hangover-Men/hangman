@@ -77,7 +77,7 @@ body {
 }
 
 .line--active {
-  animation: dash 10s linear forwards;
+  animation: dash 2s ease-in forwards;
 }
 
 @media (min-width: 1024px) {
