@@ -23,6 +23,8 @@ async function startGame() {
     key.addEventListener('click', handleClick)
   })
 
+  blankspace()
+
   /* Functions */
 
   function handleClick(event) {
@@ -110,7 +112,6 @@ async function startGame() {
       }
     }
   }
-  blankspace()
 }
 
 startGame()
