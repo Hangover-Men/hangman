@@ -14,9 +14,14 @@ async function startGame() {
     .then((word) => {
       return word
     })
-    .catch((error) => errorContainer.classList.add('message--active'))
+    .catch(() => errorContainer.classList.add('message--active'))
 
-  console.log(letters)
+  const letterData = letters.map((letter) => ({
+    letter: letter,
+    found: false,
+  }))
+
+  console.log(letterData)
 
   // Add key event listeners
   keys.forEach((key) => {
@@ -34,12 +39,23 @@ async function startGame() {
     }
 
     // Check if letter was right or wrong
-    const letter = event.target.value
+    const inputLetter = event.target.value
+    let foundLetter = false
 
-    if (letters.includes(letter) || letters.includes(letter.toLowerCase())) {
-      event.target.classList.add('key--disabled')
-      event.target.classList.add('key--true')
-    } else {
+    letterData.forEach((item) => {
+      if (
+        item.found === false &&
+        (item.letter === inputLetter ||
+          item.letter.toLowerCase() === inputLetter)
+      ) {
+        item.found = true
+        foundLetter = true
+        event.target.classList.add('key--disabled')
+        event.target.classList.add('key--true')
+      }
+    })
+
+    if (!foundLetter) {
       event.target.classList.add('key--disabled')
       event.target.classList.add('key--false')
       drawNextLine()
@@ -75,15 +91,15 @@ async function startGame() {
     }
 
     // Return 'win' if all words are found
-    let wordsFound = 0
+    let wordsMissing = false
 
-    keys.forEach((key) => {
-      if (key.classList.contains('key--true')) {
-        wordsFound++
+    letterData.forEach((item) => {
+      if (item.found === false) {
+        wordsMissing = true
       }
     })
 
-    if (letters.length === wordsFound) {
+    if (!wordsMissing) {
       return 'win'
     }
 
