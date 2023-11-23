@@ -87,6 +87,29 @@ async function startGame() {
     // Return 'goes on' if no win and no loss yet
     return 'goes on'
   }
+
+  function blankspace() {
+    // list of special chars
+    const specialSymbols = ['-', '!', '?', '.', ' ']
+    for (let index = 0; index < letters.length; index++) {
+      // div, where the word is represented
+      const testdiv = document.querySelector('.word').firstElementChild
+      // check if current letter is one of given special chars
+      // if true --> display that special char
+      // else    --> display blankspace
+      if (specialSymbols.includes(letters[index])) {
+        if (specialSymbols.indexOf[letters[index]] == 4) {
+          testdiv.innerHTML += '&nbsp;' + '&nbsp;'
+        } else {
+          testdiv.innerHTML +=
+            specialSymbols[specialSymbols.indexOf(letters[index])] + '&nbsp;'
+        }
+      } else {
+        testdiv.innerHTML += '_&nbsp;'
+      }
+    }
+  }
+  blankspace()
 }
 
 startGame()
