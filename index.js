@@ -2,6 +2,7 @@ async function startGame() {
   const lines = document.querySelectorAll('.line')
   const winContainer = document.querySelector('.message--win')
   const failContainer = document.querySelector('.message--fail')
+  const errorContainer = document.querySelector('.message--error')
   const keys = document.querySelectorAll('.key')
   let queue = 1 // There are 10 lines - we need to keep track which one is the next to draw
 
@@ -13,7 +14,7 @@ async function startGame() {
     .then((word) => {
       return word
     })
-    .catch((error) => console.error(error))
+    .catch((error) => errorContainer.classList.add('message--active'))
 
   console.log(letters)
 
