@@ -61,6 +61,7 @@ async function startGame() {
       drawNextLine()
     }
 
+    blankspace()
     // Check & update game status
     switch (getGameStatus()) {
       case 'goes on':
@@ -110,23 +111,33 @@ async function startGame() {
   function blankspace() {
     // list of special chars
     const specialSymbols = ['-', '!', '?', '.', ' ']
+    const word = new Array(letters.length)
+    const testdiv = document.querySelector('.word').firstElementChild
     for (let index = 0; index < letters.length; index++) {
       // div, where the word is represented
-      const testdiv = document.querySelector('.word').firstElementChild
       // check if current letter is one of given special chars
       // if true --> display that special char
       // else    --> display blankspace
-      if (specialSymbols.includes(letters[index])) {
-        if (specialSymbols.indexOf[letters[index]] == 4) {
-          testdiv.innerHTML += '&nbsp;' + '&nbsp;'
+      if (letterData[index].found == true) {
+        if (index == 0) {
+          word[index] = letterData[index].letter.toUpperCase()
         } else {
-          testdiv.innerHTML +=
-            specialSymbols[specialSymbols.indexOf(letters[index])] + '&nbsp;'
+          word[index] = letterData[index].letter
         }
       } else {
-        testdiv.innerHTML += '_&nbsp;'
+        if (specialSymbols.includes(letters[index])) {
+          if (specialSymbols.indexOf[letters[index]] == 4) {
+            word[index] = '&nbsp;' + '&nbsp;'
+          } else {
+            word[index] =
+              specialSymbols[specialSymbols.indexOf(letters[index])] + '&nbsp;'
+          }
+        } else {
+          word[index] = '_&nbsp;'
+        }
       }
     }
+    testdiv.innerHTML = word.join('')
   }
 }
 
