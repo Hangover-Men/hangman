@@ -104,7 +104,7 @@ body {
   padding: 32px;
   border-radius: 8px;
   backdrop-filter: blur(12px);
-  transform: translateY(-100px);
+  transform: translateY(-200px);
   text-align: center;
 }
 
