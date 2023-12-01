@@ -5,22 +5,18 @@ async function startGame() {
   const errorContainer = document.querySelector('.message--error')
   const keys = document.querySelectorAll('.key')
   let queue = 1 // There are 10 lines - we need to keep track which one is the next to draw
+  const specialSymbols = ['-', '!', '?', '.', ' ']
 
-  const letters = await fetch(
-    'https://random-word-api.herokuapp.com/word?lang=de&number=1'
-  )
-    .then((response) => response.json())
-    .then((data) => Array.from(data[0]))
-    .then((word) => {
-      return word
-    })
-    .catch(() => errorContainer.classList.add('message--active'))
+  let letters
+
+  do {
+    letters = await fetchWord()
+  } while (letters == ['!'])
 
   const letterData = letters.map((letter) => ({
     letter: letter,
-    found: false,
+    found: specialSymbols.includes(letter) ? true : false,
   }))
-
   console.log(letterData)
 
   // Add key event listeners
@@ -31,6 +27,20 @@ async function startGame() {
   blankspace()
 
   /* Functions */
+
+  async function fetchWord() {
+    const letters = await fetch(
+      'https://random-word-api.herokuapp.com/word?lang=de&number=1'
+    )
+      .then((response) => response.json())
+      .then((data) => Array.from(data[0]))
+      .then((word) => {
+        return word
+      })
+      .catch(() => errorContainer.classList.add('message--active'))
+
+    return letters
+  }
 
   function handleClick(event) {
     // Check if game is already over
@@ -71,6 +81,10 @@ async function startGame() {
         return
       case 'fail':
         failContainer.classList.add('message--active')
+        failContainer.innerHTML +=
+          '<span style="font-size: 0.5em"><br> Die Lösung: ' +
+          letters.join('') +
+          '<span>'
         return
     }
   }
@@ -110,7 +124,6 @@ async function startGame() {
 
   function blankspace() {
     // list of special chars
-    const specialSymbols = ['-', '!', '?', '.', ' ']
     const word = new Array(letters.length)
     const testdiv = document.querySelector('.word').firstElementChild
     for (let index = 0; index < letters.length; index++) {
